@@ -11,6 +11,13 @@
         width: 100%;
     }
 
+/*LG Desktop*/
+@media (max-width: 1600px) {
+    .illustration {
+        width: 80%;
+    }
+}
+
 /*Tablets*/
 @media (max-width: 768px) {
     .illustration {
@@ -20,12 +27,4 @@
         .illustration img {
             width: 80%;
         }
-}
-
-/*LG Smartphones*/
-@media (max-width: 480px) {
-}
-
-/*MD Smartphones*/
-@media (max-width: 320px) {
 }
