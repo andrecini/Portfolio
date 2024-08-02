@@ -1,0 +1,82 @@
+﻿<div class="card-skills @_flipClass">
+    <div class="card-skill-face card-face-front @(_isFlipped ? "d-none" : "")">
+        <div class="card-skill-header w-100">
+            <span class="card-skill-title">
+                @Title
+                <span class="card-skill-title-icon-circle">
+                    <i class="@Icon card-skill-title-icon" />
+                </span>
+            </span>
+        </div>
+        <div class="card-skill-body w-100">
+            <span class="card-skill-description">
+                @Description
+            </span>
+        </div>
+        <div class="card-skill-footer w-100">
+            <MudButton Variant="Variant.Filled" Color="_buttonColor" Class="w-100" @onclick="HandleToggleCard">Saiba mais</MudButton>
+        </div>
+    </div>
+    <div class="card-skill-face card-face-back @(_isFlipped ? "" : "d-none")">
+        <div class="card-skill-header w-100">
+            <span class="card-skill-title card-skill-title-back">
+                Detalhes
+                <span class="card-skill-title-icon-circle card-skill-title-icon-circle-back">
+                    <i class="bx bx-search card-skill-title-icon card-skill-title-icon-back" />
+                </span>
+            </span>
+        </div>
+        <div class="card-skill-body w-100">
+            <div class="card-skill-list">
+                @foreach (var detail in DetailsList)
+                {
+                    <div class="card-skill-list-item">
+                        <i class="bx bxs-chevron-right" />
+                        @detail
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="card-skill-footer w-100">
+            <MudButton Variant="Variant.Filled" Color="_buttonColor" Class="w-100" @onclick="HandleToggleCard">Voltar</MudButton>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public string? Icon { get; set; }
+
+    [Parameter]
+    public string? Description { get; set; }
+
+    [Parameter]
+    public List<string>? DetailsList { get; set; } = new();
+
+    private Color _buttonColor = Color.Primary;
+
+    private bool _isFlipped { get; set; } = false;
+    private string _flipClass => _isFlipped ? "isflipped" : string.Empty;
+
+    private void OnMouseOver()
+    {
+        _buttonColor = Color.Dark;
+        StateHasChanged();
+    }
+
+    private void OnMouseOut()
+    {
+        _buttonColor = Color.Primary;
+        StateHasChanged();
+    }
+
+    private void HandleToggleCard()
+    {
+        _isFlipped = !_isFlipped;
+        _buttonColor = _isFlipped ? Color.Dark : Color.Primary;
+        StateHasChanged();
+    }
+}

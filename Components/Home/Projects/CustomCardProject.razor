@@ -1,0 +1,40 @@
+﻿<div class="card-skills @_flipClass" @onmouseover="HandleToggleCard" @onmouseout="HandleToggleCard" >
+    <div class="card-skill-face card-face-front @(_isFlipped ? "d-none" : "")">
+        <img src="@ImageSource" alt="@Title" class="card-project-image"/>
+    </div>
+    <div class="card-skill-face card-face-back @(_isFlipped ? "" : "d-none")">
+        <div class="card-skill-title">
+            @Title
+        </div>
+        <div class="card-skill-description">
+            @Description
+        </div>
+        <MudLink Href="@RepositoryUrl" Typo="Typo.body1" Class="d-flex flex-crow justify-center align-center gap-1">
+            <MudIcon Icon="@Icons.Material.Filled.Link"/>
+            Ir para o repositório
+        </MudLink>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string? ImageSource { get; set; }
+
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public string? Description { get; set; }
+
+    [Parameter]
+    public string? RepositoryUrl { get; set; }
+
+    private bool _isFlipped { get; set; } = false;
+    private string _flipClass => _isFlipped ? "isflipped" : string.Empty;
+
+    private void HandleToggleCard()
+    {
+        _isFlipped = !_isFlipped;
+        StateHasChanged();
+    }
+}

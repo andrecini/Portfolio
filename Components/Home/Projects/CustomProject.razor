@@ -1,0 +1,38 @@
+﻿
+<div class="skills d-flex flex-column align-center justify-center vh-100 w-100">
+
+    <span class="my-skills-title">Meus <b>Projetos</b></span>
+
+    <div class="skills-list">
+        <CustomCardProject Title="Gerenciador de Bibliotecas" Description="@_LibraryManagmentsDescription" ImageSource="assets/projects/libraryManagment.png"
+                           RepositoryUrl="https://github.com/andrecini/desafio-gerenciador-de-biblioteca" />
+
+        <CustomCardProject Title="Projeto Caramel Pattern" Description="@_apiPatternDescription" ImageSource="assets/projects/selenium.png"
+                           RepositoryUrl="https://github.com/Projeto-Caramel/web-api-pattern" />
+
+        <CustomCardProject Title="Escalonador" Description="@_schedulerDescription" ImageSource="assets/projects/scheduler.png"
+                           RepositoryUrl="https://github.com/andrecini/FESA.Escalonador" />
+
+        <CustomCardProject Title="Treinamento Sellenium" Description="@_seleniumDescription" ImageSource="assets/projects/apiPattern.png"
+                           RepositoryUrl="https://github.com/andrecini/Treinamento.Selenium.Web" />
+    </div>
+</div>
+
+@code {
+    private string _LibraryManagmentsDescription = "Este projeto aplica conceitos aprendidos nos cursos e mentorias " +
+    "da NextWave. Implementa um Sistema de Gerenciamento de Bibliotecas com Clean Architecture para separação de responsabilidades, " +
+    "utilizando Padrões Repository, UnitOfWork e OOP. Inclui Blazor, Hangfire, SendGrid, e XUnit para frontend, jobs, emails e testes.";
+
+    private string _apiPatternDescription = "O projeto Web API Pattern, desenvolvido para o Projeto Caramel, TCC de Engenharia " +
+    "da Computação de 2024, utiliza .NET 8, Clean Architecture, Domain Driven Design, Repository Pattern e Unit of Work. Integra " +
+    "SQL Server e Entity Framework, além de middleware personalizado para exceções, Fluent Validators e AutoMapper.";
+
+    private string _schedulerDescription = "A aplicação é uma ferramenta para cálculos de escalonamento de processos, " +
+    "utilizando algoritmos como FCFS, SJF, RR, SFRT, PRIOc e PRIOp. Ela permite inserir dados de chegada, tempo de execução " +
+    "e prioridade dos processos, além de escolher o tipo de escalonamento desejado para obter análises com visualização gráfica.";
+
+    private string _seleniumDescription = "Esta aplicação foi desenvolvida para treinar o uso do Selenium na geração automatizada " +
+    "de evidências de testes de integração. Utiliza ASP.NET Core com .NET 7 para a estruturação do projeto, FluentValidator para " +
+    "validações, EntityFramework para acesso a dados, Selenium para testes automatizados e XUnit para testes unitários.";
+
+}

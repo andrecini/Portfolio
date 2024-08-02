@@ -1,0 +1,52 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudBreakpointProvider />
+
+<MudLayout>
+    <MudHidden Breakpoint="Breakpoint.MdAndDown">
+        <!-- Esconde a toolbar quando a tela é menor que 768px -->
+        <MudAppBar Color="Color.Transparent" Class="px-20">
+            <MudText Typo="Typo.h5" Color="Color.Primary"><b>Portfólio</b></MudText>
+            <MudSpacer />
+
+            <MudLink Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Início</b></MudLink>
+            <MudLink Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Sobre</b></MudLink>
+            <MudLink Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Skills</b></MudLink>
+            <MudLink Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Projetos Pessoais</b></MudLink>
+            <MudLink Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Contato</b></MudLink>
+
+            <MudSwitch @bind-Value="_isDarkMode" Size="Size.Medium" Class="mx-2 my-1"
+                       Color="Color.Primary" UncheckedColor="Color.Default"
+                       ThumbIcon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)"
+                       ThumbIconColor="@(_isDarkMode ? Color.Dark : Color.Warning)" />
+        </MudAppBar>
+    </MudHidden>
+
+    <MudHidden Breakpoint="Breakpoint.LgAndUp">
+        <!-- Esconde o appBar quando a tela é maior que 768px -->
+        <MudAppBar Color="Color.Default" Fixed="true">
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" />
+            <MudSpacer />
+            <MudText Typo="Typo.h5" Color="Color.Primary"><b>Portfólio</b></MudText>
+        </MudAppBar>
+    </MudHidden>
+
+    <MudMainContent Class="d-flex align-top justify-center main-container-padding w-100 mw-100">
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    bool _isDarkMode = true;
+    bool _drawerOpen = true;
+    private MudTheme _theme = new();
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}

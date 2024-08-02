@@ -1,0 +1,38 @@
+﻿
+<div class="skills d-flex flex-column align-center justify-center vh-100 w-100">
+
+    <span class="my-skills-title">Minhas <b>Skills</b></span>
+
+    <div class="skills-list">
+        <CustomCardSkill Title="Backend" Icon="bx bx-code" Description="@_backendDescription" DetailsList="_backendDetailsList" />
+
+        <CustomCardSkill Title="Frontend" Icon="bx bx-code-alt" Description="@_frontendDescription" DetailsList="_frontendDetailsList" />
+
+        <CustomCardSkill Title="Database" Icon="bx bx-data" Description="@_databaseDescription" DetailsList="_databaseDetailsList" />
+
+        <CustomCardSkill Title="Cloud" Icon="bx bx-cloud" Description="@_cloudDescription" DetailsList="_cloudDetailsList" />
+    </div> 
+</div>
+
+@code {
+    private string _backendDescription = "Desenvolvo soluções robustas e escaláveis com .NET, criando APIs, " + 
+    "microsserviços, e mantendo aplicações legadas eficientes.";
+
+    private List<string>? _backendDetailsList = [".NET Core e Framework", "ASP.NET CORE", "Rest APIs e Background Services", "Testes Unitários, Funcionais e de Carga"];
+
+    private string _frontendDescription = "Crio interfaces dinâmicas e responsivas usando Blazor, HTML, CSS " + 
+    "e JS, sempre focando na melhor experiência do usuário.";
+
+    private List<string>? _frontendDetailsList = ["Blazor WASM e Server", "Prototipação com Figma", "HTML, CSS e Sass", "Javascript e JQuery"];
+
+    private string _databaseDescription = "Experiência em bancos de dados SQL e NoSQL, com foco em modelagem, " + 
+    "otimização e manutenção de sistemas de dados complexos e robustos.";
+
+    private List<string>? _databaseDetailsList = ["SQL Server", "Postgree", "Oracle", "MongoDB"];
+
+    private string _cloudDescription = "Utilizo AWS e Azure para arquiteturas serverless, com foco em escalabilidade, " +
+    "segurança e eficiência nas operações em nuvem.";
+
+    private List<string>? _cloudDetailsList = ["Lambda e Azure Functions", "AWS Api Gateway", "S3 e Blob", "Cloud Front"];
+
+}

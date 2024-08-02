@@ -1,0 +1,40 @@
+﻿.main-container-padding {
+    padding-right: 80px !important;
+    padding-left: 80px !important;
+}
+
+/* Breakpoint para monitores widescreen grandes (1920px e acima) */
+@media (max-width: 1920px) {
+    /* OK */
+}
+
+/* Breakpoint para desktops médios (1200px e acima) */
+@media (max-width: 1200px) {
+    /* OK */
+}
+
+/* Breakpoint para laptops pequenos (1024px e acima) */
+@media (max-width: 1024px) {
+    /* OK */
+}
+
+/* Breakpoint para tablets (768px e acima) */
+@media (max-width: 768px) {
+    .main-container-padding {
+        padding-right: 40px !important;
+        padding-left: 40px !important;
+    }
+}
+
+/* Breakpoint para dispositivos móveis maiores (480px e acima) */
+@media (max-width: 480px) {
+    .main-container-padding {
+        padding-right: 20px !important;
+        padding-left: 20px !important;
+    }
+}
+
+/* Breakpoint para dispositivos móveis pequenos (320px e acima) */
+@media (min-width: 320px) {
+    /* OK */
+}

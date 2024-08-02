@@ -1,0 +1,33 @@
+﻿.illustration {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+    .illustration img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+    }
+
+/*Tablets*/
+@media (max-width: 768px) {
+    .illustration {
+        justify-content: center;
+    }
+
+    .illustration img {
+        width: 80%;
+    }
+}
+
+/*LG Smartphones*/
+@media (max-width: 480px) {
+   
+}
+
+/*MD Smartphones*/
+@media (max-width: 320px) {
+   
+}

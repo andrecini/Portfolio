@@ -1,0 +1,33 @@
+﻿#skills {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.my-skills-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    font-weight: 700;
+    color: white;
+    gap: 20px;
+    margin-bottom: 40px
+}
+
+    .my-skills-title b {
+        color: rgba(119, 107, 231, 1);
+    }
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Ajusta o número de colunas conforme a largura */
+    gap: 40px;
+    width: 100%;
+    max-width: 100%; /* Limite máximo de largura */
+    margin: 0 auto; /* Centraliza o grid */
+    padding: 20px;
+}
