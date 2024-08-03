@@ -25,6 +25,14 @@
     }
 
         .illustration img {
-            width: 80%;
+            width: 100%;
         }
+}
+
+
+/*LG Smartphone*/
+@media (max-width: 480px) {
+    .illustration {
+        width: 95% !Important;
+    }
 }

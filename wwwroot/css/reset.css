@@ -3,22 +3,55 @@
     padding-left: 80px !important;
 }
 
-/* Breakpoint para monitores widescreen grandes (1920px e acima) */
+/*XXL Desktop*/
+@media (min-width: 1921px) {
+    .mud-button-label {
+        font-size: 30px !important;
+    }
+
+    .mud-icon-size-large {
+        font-size: 40px !important;
+    }
+}
+
+/*XL Desktop*/
 @media (max-width: 1920px) {
-    /* OK */
+    .mud-button-label {
+        font-size: 25px !important;
+    }
+
+    .mud-icon-size-large {
+        font-size: 35px !important;
+    }
 }
 
-/* Breakpoint para desktops médios (1200px e acima) */
+/*LG Desktop*/
+@media (max-width: 1600px) {
+    .mud-button-label {
+        font-size: 20px !important;
+    }
+
+    .mud-icon-size-large {
+        font-size: 30px !important;
+    }
+}
+
+/*MD Desktop*/
 @media (max-width: 1200px) {
-    /* OK */
+    .mud-button-label {
+        font-size: 18px !important;
+    }
+
+    .mud-icon-size-large {
+        font-size: 20px !important;
+    }
 }
 
-/* Breakpoint para laptops pequenos (1024px e acima) */
+/*SM Desktop*/
 @media (max-width: 1024px) {
-    /* OK */
 }
 
-/* Breakpoint para tablets (768px e acima) */
+/*Tablets*/
 @media (max-width: 768px) {
     .main-container-padding {
         padding-right: 40px !important;
@@ -26,7 +59,7 @@
     }
 }
 
-/* Breakpoint para dispositivos móveis maiores (480px e acima) */
+/*LG Smartphone*/
 @media (max-width: 480px) {
     .main-container-padding {
         padding-right: 20px !important;
@@ -34,7 +67,14 @@
     }
 }
 
-/* Breakpoint para dispositivos móveis pequenos (320px e acima) */
-@media (min-width: 320px) {
-    /* OK */
+/*MD Smartphone*/
+@media (max-width: 320px) {
+    .mud-button-label {
+        font-size: 14px !important;
+    }
+
+    .mud-icon-size-large {
+        font-size: 18px !important;
+    }
 }
+
