@@ -1,4 +1,4 @@
-﻿#skills {
+﻿.projects {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,7 @@
     gap: 40px;
 }
 
-.my-skills-title {
+.my-projects-title {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -18,18 +18,105 @@
     margin-bottom: 40px
 }
 
-    .my-skills-title b {
+    .my-projects-title b {
         color: rgba(119, 107, 231, 1);
     }
 
-.skills-list {
+.projects-list {
     display: grid;
-    grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Ajusta o número de colunas conforme a largura */
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
     gap: 40px;
     width: 100%;
-    max-width: 100%; /* Limite máximo de largura */
-    max-height: 30% !important; /* Limite máximo de largura */
-    margin: 0 auto; /* Centraliza o grid */
+    max-width: 100%; 
+    max-height: 30% !important; 
+    margin: 0 auto; 
     padding: 20px;
     max-height: 50%
+}
+
+/*XXL Desktop*/
+@media (min-width: 1920px) {
+    .my-projects-title {
+        font-size: 150px;
+    }
+}
+
+/*XL Desktop*/
+@media (max-width: 1920px) {
+    .my-projects-title {
+        font-size: 100px;
+    }
+}
+
+/*LG Desktop*/
+@media (max-width: 1600px) {
+    .my-projects-title {
+        font-size: 80px;
+        margin: 0;
+    }
+
+    .projects-list {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+        max-height: fit-content !important;
+    }
+}
+
+/*MD Desktop*/
+@media (max-width: 1200px) {
+
+    .my-projects-title {
+        font-size: 60px;
+    }
+
+    .projects-list { 
+        gap: 10px;
+        padding: 0;
+    }
+}
+
+/*SM Desktop*/
+@media (max-width: 1024px) {
+    .my-projects-title {
+        font-size: 50px;
+    }
+}
+
+/*Tablets*/
+@media (max-width: 768px) {
+    .projects-list {
+        height: fit-content !important;
+    }
+
+    .projects {
+        height: fit-content !important;
+        gap: 20px;
+    }
+
+    .my-projects-title {
+        font-size: 100px;
+        margin: 80px 0 0 0;
+    }
+
+    .projects-list {
+        grid-template-columns: repeat(2, minmax(250px, 1fr)); 
+    }
+}
+
+/*LG Smartphone*/
+@media (max-width: 480px) {
+    .my-projects-title {
+        font-size: 60px;
+    }
+
+    .projects-list {
+        grid-template-columns: repeat(1, minmax(250px, 1fr));
+    }
+}
+
+/*MD Smartphone*/
+@media (max-width: 320px) {
+    .my-projects-title {
+        font-size: 45px;
+        gap: 10PX;
+    }
 }

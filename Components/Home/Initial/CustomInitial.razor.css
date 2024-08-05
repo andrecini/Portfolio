@@ -22,7 +22,7 @@
     }
 
     .inital-info .info-name {
-        font-size: 150px;
+        font-size: 140px;
         font-weight: 700;
         color: rgba(119, 107, 231, 1);
     }
@@ -43,6 +43,47 @@
         gap: 20px;
         margin-top: 10px;
     }
+
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 0.15em solid white;
+    white-space: nowrap;
+    animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+    text-align: left;
+    width: 100%;
+    max-width: fit-content;
+}
+
+.typewriter-text {
+    display: inline;
+    color: #333;
+    font-family: 'Courier New', Courier, monospace;
+    word-spacing: -40px;
+    font-size: 1.5em;
+    padding-right: 1px;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: white;
+    }
+}
+
 
 /*XXL Desktop*/
 @media (min-width: 1921px) {
@@ -77,12 +118,16 @@
 
 /*LG Desktop*/
 @media (max-width: 1600px) {
+    .inital-info {
+        gap: 5px
+    }
+
     .inital-info .info-presentation {
         font-size: 40px;
     }
 
     .inital-info .info-name {
-        font-size: 110px;
+        font-size: 100px;
     }
 
     .inital-info .info-summary {

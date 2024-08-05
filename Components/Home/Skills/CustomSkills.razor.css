@@ -62,8 +62,6 @@
     }
 
     .skills-list {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Ajusta o número de colunas conforme a largura */
         gap: 10px;
         padding: 0;
     }

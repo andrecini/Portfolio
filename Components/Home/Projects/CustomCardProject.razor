@@ -1,12 +1,12 @@
-﻿<div class="card-skills @_flipClass" @onmouseover="HandleToggleCard" @onmouseout="HandleToggleCard" >
-    <div class="card-skill-face card-face-front @(_isFlipped ? "d-none" : "")">
+﻿<div class="card-projects @_flipClass" @onmouseover="HandleToggleCard" @onmouseout="HandleToggleCard" >
+    <div class="card-project-face card-face-front @(_isFlipped ? "d-none" : "")">
         <img src="@ImageSource" alt="@Title" class="card-project-image"/>
     </div>
-    <div class="card-skill-face card-face-back @(_isFlipped ? "" : "d-none")">
-        <div class="card-skill-title">
+    <div class="card-project-face card-face-back @(_isFlipped ? "" : "d-none")">
+        <div class="card-project-title">
             @Title
         </div>
-        <div class="card-skill-description">
+        <div class="card-project-description">
             @Description
         </div>
         <MudLink Href="@RepositoryUrl" Typo="Typo.body1" Class="d-flex flex-crow justify-center align-center gap-1">
