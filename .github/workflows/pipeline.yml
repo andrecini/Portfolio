@@ -50,7 +50,7 @@ jobs:
         name: build-artifacts
 
     - name: Publish the project
-      run: dotnet publish --configuration Release --output ./output Portifolio.Professional.csproj
+      run: dotnet publish --configuration Release --output ./output ./YourBlazorProject/YourBlazorProject.Client
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
