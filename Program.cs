@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Portifolio.Professional;
+using Portifolio;
 using MudBlazor.Services;
 
 

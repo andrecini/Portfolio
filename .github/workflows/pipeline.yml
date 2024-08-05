@@ -1,58 +1,43 @@
-name: Build and Deploy Blazor WASM
+name: Portfolio Deployment
 
+# Run workflow on every push to the master branch
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build:
+  deploy-to-github-pages:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Check out the repository
-      uses: actions/checkout@v4
-
+    # uses GitHubs checkout action to checkout from the master branch
+    - uses: actions/checkout@v2
+    
+    # sets up .NET
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore Portifolio.Professional.csproj
+    # publishes Blazor project to the release-folder
+    - name: Publish .NET Project
+      run: dotnet publish Portfolio/Portfolio.csproj -c Release -o Release --nologo
+      
+    # changes the base-tag in index.html from '/' to 'Portfolio' to match GitHub Pages repository subdirectory
+    #- name: Change base-tag in index.html from / to Portfolio
+    #  run: sed -i 's/<base href="\/" \/>/<base href="\/portfolio\/" \/>/g' Release/wwwroot/index.html    
+      
+    # copy index.html to 404.html to serve the same file when a file is not found
+    - name: copy index.html to 404.html
+      run: cp Release/wwwroot/index.html Release/wwwroot/404.html
 
-    - name: Build the project
-      run: dotnet build --configuration Release Portifolio.Professional.csproj
-
-    - name: Publish the project
-      run: dotnet publish --configuration Release --output ./output Portifolio.Professional.csproj
-
-    - name: Save build outputs
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-artifacts
-        path: ./output/wwwroot/
-
-  publish_deploy:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-    - name: Check out the repository
-      uses: actions/checkout@v4
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.x'
-
-    - name: Retrieve build outputs
-      uses: actions/download-artifact@v4
-      with:
-        name: build-artifacts
-
+    # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
+    - name: Add .nojekyll file
+      run: touch Release/wwwroot/.nojekyll
+      
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: JamesIves/github-pages-deploy-action@v4.4.2
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./output/wwwroot
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: Release/wwwroot
+      
