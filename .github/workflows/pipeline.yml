@@ -3,7 +3,7 @@ name: Build and Deploy Blazor WASM
 on:
   push:
     branches:
-      - main # Ajuste para a branch principal do seu projeto
+      - main # Certifique-se de que está usando a branch correta
 
 jobs:
   build:
@@ -16,10 +16,13 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x' # Versão do .NET utilizada no seu projeto
+        dotnet-version: '8.0.x'
 
     - name: Restore dependencies
       run: dotnet restore Portifolio.Professional.csproj
+
+    - name: Clean previous builds
+      run: dotnet clean
 
     - name: Build the project
       run: dotnet build --configuration Release Portifolio.Professional.csproj
@@ -29,7 +32,7 @@ jobs:
       with:
         name: build-artifacts
         path: |
-          ./bin/Release/net8.0/
+          ./bin/Release/net8.0/wwwroot
 
   publish_deploy:
     runs-on: ubuntu-latest
@@ -42,7 +45,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x' # Certifique-se de que a versão do .NET é a mesma
+        dotnet-version: '8.0.x'
 
     - name: Retrieve build outputs
       uses: actions/download-artifact@v4
@@ -52,9 +55,11 @@ jobs:
     - name: Publish the project
       run: dotnet publish --configuration Release --output ./output Portifolio.Professional.csproj
 
+    - name: Clean conflicting assets
+      run: rm -rf ./output/wwwroot/_framework
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./output/wwwroot
-
