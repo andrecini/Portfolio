@@ -20,7 +20,7 @@ jobs:
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET Project
-      run: dotnet publish Portifolio.csproj -c Release -o Release --nologo
+      run: dotnet publish Portfolio/Portifolio.csproj -c Release -o Release --nologo
       
     # changes the base-tag in index.html from '/' to 'Portfolio' to match GitHub Pages repository subdirectory
     - name: Change base-tag in index.html from / to Portfolio
