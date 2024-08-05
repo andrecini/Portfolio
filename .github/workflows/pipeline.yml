@@ -19,17 +19,17 @@ jobs:
         dotnet-version: '8.0.x' # Versão do .NET utilizada no seu projeto
 
     - name: Restore dependencies
-      run: dotnet restore ./YourBlazorProject/YourBlazorProject.Client
+      run: dotnet restore Portifolio.Professional.csproj
 
     - name: Build the project
-      run: dotnet build --configuration Release ./YourBlazorProject/YourBlazorProject.Client
+      run: dotnet build --configuration Release Portifolio.Professional.csproj
 
     - name: Save build outputs
       uses: actions/upload-artifact@v4
       with:
         name: build-artifacts
         path: |
-          ./YourBlazorProject/YourBlazorProject.Client/bin/Release/net8.0/
+          ./bin/Release/net8.0/
 
   publish_deploy:
     runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ jobs:
         name: build-artifacts
 
     - name: Publish the project
-      run: dotnet publish --configuration Release --output ./output ./YourBlazorProject/YourBlazorProject.Client
+      run: dotnet publish --configuration Release --output ./output Portifolio.Professional.csproj
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
