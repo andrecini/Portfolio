@@ -51,8 +51,9 @@
     white-space: nowrap;
     animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
     text-align: left;
-    width: 100%;
+    width: fit-content;
     max-width: fit-content;
+    padding: 0 10px;
 }
 
 .typewriter-text {
@@ -92,7 +93,7 @@
     }
 
     .inital-info .info-name {
-        font-size: 200px;
+        font-size: 180px;
     }
 
     .inital-info .info-summary {
@@ -108,7 +109,7 @@
     }
 
     .inital-info .info-name {
-        font-size: 150px;
+        font-size: 120px;
     }
 
     .inital-info .info-summary {
@@ -122,20 +123,20 @@
         gap: 5px
     }
 
-    .inital-info .info-presentation {
-        font-size: 40px;
-    }
+        .inital-info .info-presentation {
+            font-size: 40px;
+        }
 
-    .inital-info .info-name {
-        font-size: 100px;
-    }
+        .inital-info .info-name {
+            font-size: 100px;
+        }
 
-    .inital-info .info-summary {
-        font-size: 25px;
-        font-weight: 400;
-        line-height: 1.43;
-        max-width: 90%;
-    }
+        .inital-info .info-summary {
+            font-size: 25px;
+            font-weight: 400;
+            line-height: 1.43;
+            max-width: 90%;
+        }
 }
 
 /*MD Desktop*/
@@ -158,6 +159,10 @@
         line-height: 1.43;
         max-width: 90%;
     }
+
+    .typewriter-text {
+        word-spacing: -20px;
+    }
 }
 
 /*SM Desktop*/
@@ -176,6 +181,10 @@
 
     .inital-info .info-summary {
         font-size: 16px;
+    }
+
+    .typewriter-text {
+        word-spacing: -40px;
     }
 }
 
@@ -212,44 +221,61 @@
 
 /*LG Smartphone*/
 @media (max-width: 480px) {
-        .inital-info .info-presentation {
-            font-size: 40px;
-        }
+    .inital-info .info-presentation {
+        font-size: 40px;
+    }
 
-        .inital-info .info-name {
-            font-size: 90px;
-        }
+    .inital-info .info-name {
+        font-size: 60px;
+    }
 
-        .inital-info .info-summary {
-            font-size: 22px;
-            line-height: 1.2;
-            max-width: 100%;
-            text-align: center !important;
-            margin-bottom: 20px;
-        }
+    .inital-info .info-summary {
+        font-size: 22px;
+        line-height: 1.2;
+        max-width: 100%;
+        text-align: center !important;
+        margin-bottom: 20px;
+    }
+
+    .typewriter-text {
+        word-spacing: -20px;
+    }
 }
 
 /*MD Smartphone*/
 @media (max-width: 320px) {
+    .initial {
+        padding: 20px 0 0 0;
+    }
+
     .inital-info {
         padding: 20px 0;
     }
 
-    .inital-info .info-buttons {
-        gap: 10px;
+        .inital-info .info-buttons {
+            gap: 10px;
+            margin: 0;
+        }
+
+        .inital-info .info-presentation {
+            font-size: 25px;
+        }
+
+        .inital-info .info-name {
+            font-size: 45px;
+        }
+
+        .inital-info .info-summary {
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+    .typewriter {
+        padding: 0 5px;
     }
 
-    .inital-info .info-presentation {
-        font-size: 30px;
-    }
-
-    .inital-info .info-name {
-        font-size: 50px;
-    }
-
-    .inital-info .info-summary {
-        font-size: 16px;
-        line-height: 1.2;
-        text-align: center;
+    .typewriter-text {
+        word-spacing: -15px;
     }
 }

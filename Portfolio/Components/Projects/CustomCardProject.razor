@@ -1,4 +1,4 @@
-﻿<div class="card-projects @_flipClass" @onmouseover="HandleToggleCard" @onmouseout="HandleToggleCard" >
+﻿<div class="card-projects @_flipClass" @onclick="HandleToggleCard" >
     <div class="card-project-face card-face-front @(_isFlipped ? "d-none" : "")">
         <img src="@ImageSource" alt="@Title" class="card-project-image"/>
     </div>

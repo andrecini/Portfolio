@@ -6,18 +6,17 @@
 <MudSnackbarProvider />
 <MudBreakpointProvider />
 
-<MudLayout>
+<MudLayout Style="height: fit-content">
     <MudHidden Breakpoint="Breakpoint.MdAndDown">
         <!-- Esconde a toolbar quando a tela é menor que 768px -->
         <MudAppBar Color="Color.Transparent" Class="px-20">
             <MudText Typo="Typo.h5" Color="Color.Primary"><b>Portfólio</b></MudText>
             <MudSpacer />
 
-            <MudLink Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Início</b></MudLink>
-            <MudLink Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Sobre</b></MudLink>
-            <MudLink Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Skills</b></MudLink>
-            <MudLink Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Projetos Pessoais</b></MudLink>
-            <MudLink Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Contato</b></MudLink>
+            <MudLink Href="/" Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Início</b></MudLink>
+            <MudLink Href="/about" Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Sobre</b></MudLink>
+            <MudLink Href="/skills" Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Skills</b></MudLink>
+            <MudLink Href="/projects" Typo="Typo.subtitle1" Color="Color.Surface" Class="px-4"><b>Projetos Pessoais</b></MudLink>
 
             <MudSwitch @bind-Value="_isDarkMode" Size="Size.Medium" Class="mx-2 my-1"
                        Color="Color.Primary" UncheckedColor="Color.Default"
@@ -29,31 +28,43 @@
     <MudHidden Breakpoint="Breakpoint.LgAndUp">
         <!-- Esconde o appBar quando a tela é maior que 768px -->
         <MudAppBar Color="Color.Default" Fixed="true">
-            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" />
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" @onclick="DrawerToggle"/>
             <MudSpacer />
-            <MudText Typo="Typo.h5" Color="Color.Primary"><b>Portfólio</b></MudText>
+            <MudAvatar @onclick="GoToHomePage" Color="Color.Primary">A</MudAvatar>
         </MudAppBar>
+        <MudDrawer @bind-Open="@_drawerOpen" Elevation="1">
+            <MudDrawerHeader>
+                <MudText Typo="Typo.h6" Color="Color.Primary">Portifólio</MudText>
+            </MudDrawerHeader>
+            <MudNavMenu>
+                <MudNavLink Match="NavLinkMatch.All" Href="/">Home</MudNavLink>
+                <MudNavLink Href="/about">Sobre Mim</MudNavLink>
+                <MudNavLink Href="/skills">Skills</MudNavLink>
+                <MudNavLink Href="/projects">Projetos</MudNavLink>
+            </MudNavMenu>
+        </MudDrawer>
     </MudHidden>
 
     <MudMainContent Class="d-flex align-top justify-center main-container-padding w-100 mw-100">
         @Body
     </MudMainContent>
-
-
-    <MudAppBar Color="Color.Default" Fixed="false" Class="mt-20 mb-0">
-        <MudSpacer />
-        <MudIcon Icon="@Icons.Material.Filled.Copyright" />
-        <MudText Typo="Typo.subtitle1" Color="Color.Default">André Vítor Pereira Cini</MudText>
-    </MudAppBar>
 </MudLayout>
 
 @code {
     bool _isDarkMode = true;
-    bool _drawerOpen = true;
+    bool _drawerOpen = false;
     private MudTheme _theme = new();
+
+    [Inject]
+    public NavigationManager Navigator { get; set; }
 
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
+    }
+
+    void GoToHomePage()
+    {
+        Navigator.NavigateTo("/");
     }
 }
