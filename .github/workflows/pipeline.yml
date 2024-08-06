@@ -31,9 +31,9 @@ jobs:
     - name: Create .nojekyll file
       run: touch build/wwwroot/.nojekyll
 
-    # Add 404.html for SPA routing fallback
-    - name: Copy 404.html for GitHub Pages fallback
-      run: cp 404.html build/wwwroot/404.html
+    # # Add 404.html for SPA routing fallback
+    # - name: Copy 404.html for GitHub Pages fallback
+    #   run: cp 404.html build/wwwroot/404.html
 
     # Commit wwwroot to GitHub Pages
     - name: Commit wwwroot to GitHub Pages
