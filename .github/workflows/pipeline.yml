@@ -10,20 +10,32 @@ permissions:
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0.x'
+
     - name: Publish with dotnet
       run: dotnet publish --configuration Release --output build
-    # changes the base-tag in index.html from '/' to 'BlazorAppSpendsRegister' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to Portfolio
-      run: sed -i 's/<base href="\/" \/>/<base href="\/Portfolio\/" \/>/g' build/wwwroot/index.html
+
+    # changes the base-tag in index.html from '/' to '/Portfolio/' to match GitHub Pages repository subdirectory
+    - name: Change base-tag in index.html from / to /Portfolio/
+      run: sed -i 's|<base href="/" />|<base href="/Portfolio/" />|g' build/wwwroot/index.html
+
+    # Create .nojekyll file to prevent GitHub Pages from treating the site as a Jekyll site
+    - name: Create .nojekyll file
+      run: touch build/wwwroot/.nojekyll
+
+    # Add 404.html for SPA routing fallback
+    - name: Copy 404.html for GitHub Pages fallback
+      run: cp 404.html build/wwwroot/404.html
+
+    # Commit wwwroot to GitHub Pages
     - name: Commit wwwroot to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
