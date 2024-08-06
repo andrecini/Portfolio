@@ -12,15 +12,70 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: fit-content;
+        }
+
+        #app {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100vw;
+            height: 100vh !important;
+            background-color: rgba(50, 51, 61, 1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            overflow-y: auto;
+        }
+
+        .hm-spinner {
+            height: 115px;
+            width: 115px;
+            border: 5px solid transparent;
+            border-top-color: #9C27B0;
+            border-bottom-color: #9C27B0;
+            border-radius: 50%;
+            position: relative;
+            animation: spin 3s linear infinite;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+            .hm-spinner::before {
+                content: "";
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                bottom: 20px;
+                left: 20px;
+                border: 5px solid transparent;
+                border-top-color: #BA68C8;
+                border-bottom-color: #BA68C8;
+                border-radius: 50%;
+                animation: spin 1.5s linear infinite;
+            }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
+    <div id="app" class="loading">
+        <div class="hm-spinner"></div>
     </div>
 
     <div id="blazor-error-ui">
@@ -29,6 +84,17 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+
+    <script>
+        window.addEventListener('load', function () {
+            // Remove a classe de carregamento após o Blazor carregar
+            var appElement = document.getElementById('app');
+            if (appElement) {
+                appElement.classList.remove('loading');
+                appElement.style.backgroundColor = 'transparent'; // Remove a cor de fundo após o carregamento
+            }
+        });
+    </script>
 </body>
 
 </html>
