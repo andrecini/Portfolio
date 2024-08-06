@@ -102,11 +102,13 @@
 
 <script type="text/javascript">
     (function (l) {
-        // Verifica se a URL contém um caminho não esperado e precisa ser corrigida
-        if (l.pathname !== '/Portfolio/' && !l.pathname.startsWith('/Portfolio/')) {
-            // Redireciona para o caminho base correto
-            var correctedPath = '/Portfolio' + l.pathname;
-            window.history.replaceState(null, null, correctedPath + l.search + l.hash);
+        if (l.search[1] === '/') {
+            var decoded = l.search.slice(1).split('&').map(function (s) {
+                return s.replace(/~and~/g, '&')
+            }).join('?');
+            window.history.replaceState(null, null,
+                "/Portfolio" + l.pathname.slice(0, -1) + decoded + l.hash
+            );
         }
     }(window.location))
 </script>
